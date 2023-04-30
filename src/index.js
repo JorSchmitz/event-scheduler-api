@@ -1,6 +1,6 @@
 const express = require('express')
 
-const db = require('./database/database')
+// const db = require('./database/database')
 
 const config = require('./database/config/config').api
 
@@ -8,21 +8,21 @@ const app = express()
 
 app.use(express.json())
 
-db.authenticate()
-  .then(() => {
-    console.log('Database authenticated')
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+// db.authenticate()
+//   .then(() => {
+//     console.log('Database authenticated')
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
 
-db.sync()
-  .then(() => {
-    console.log('Database synced')
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+// db.sync()
+//   .then(() => {
+//     console.log('Database synced')
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
 
 app.get('/', ({ res }) => {
   return res.json({

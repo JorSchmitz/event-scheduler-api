@@ -2,7 +2,9 @@ const { Model } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
-    static associate(models) {}
+    static associate(models) {
+      Users.belongsTo(models.Roles, { as: 'role', foreignKey: 'role_id' })
+    }
   }
   Users.init(
     {
@@ -32,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         allowNull: false,
         type: DataTypes.STRING,
+      },
+      role_id: {
+        type: DataTypes.INTEGER,
       },
     },
     {
