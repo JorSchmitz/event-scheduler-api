@@ -1,18 +1,19 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('../libs/passport')
+const { checkAdmin } = require('../middlewares/permissionsChecker.middleware')
 
 const eventControllers = require('../controllers/events.controller')
 
 router
   .route('/')
-  .get(eventControllers.getEvents)
-  .post(passport, eventControllers.postEvent)
+  .get(passport, eventControllers.getEvents)
+  .post(passport, checkAdmin, eventControllers.postEvent)
 
 router
   .route('/:id')
-  .get(eventControllers.getEventById)
-  .put(passport, eventControllers.putEvent)
-  .delete(passport, eventControllers.deleteEvent)
+  .get(passport, eventControllers.getEventById)
+  .put(passport, checkAdmin, eventControllers.putEvent)
+  .delete(passport, checkAdmin, eventControllers.deleteEvent)
 
 module.exports = router
