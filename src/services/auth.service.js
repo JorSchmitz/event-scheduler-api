@@ -1,4 +1,3 @@
-const models = require('../database/models')
 const { findUserByEmailOr404 } = require('./users.service')
 const { comparePassword } = require('../libs/bcrypt')
 

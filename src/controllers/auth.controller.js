@@ -3,7 +3,7 @@ const { createUser } = require('../services/users.service')
 const jwt = require('jsonwebtoken')
 const config = require('../database/config/config')
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await checkUsersCredentials(email, password)
@@ -22,11 +22,11 @@ const login = async (req, res, next) => {
       token,
     })
   } catch (error) {
-    next(error)
+    return res.status(401).json({ message: 'Unauthorized, wrong credentials' })
   }
 }
 
-const signUp = async (req, res, next) => {
+const signUp = async (req, res) => {
   try {
     const { body } = req
     const user = await createUser(body)
