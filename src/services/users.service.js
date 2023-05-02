@@ -7,6 +7,12 @@ const getAuthUserOr404 = async (id) => {
   return user
 }
 
+const findUserByEmailOr404 = async (email) => {
+  const user = await models.Users.findOne({ where: { email } })
+  return user
+}
+
 module.exports = {
   getAuthUserOr404,
+  findUserByEmailOr404,
 }

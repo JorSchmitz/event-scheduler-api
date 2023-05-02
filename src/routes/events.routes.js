@@ -7,12 +7,12 @@ const eventControllers = require('../controllers/events.controller')
 router
   .route('/')
   .get(eventControllers.getEvents)
-  .post(eventControllers.postEvent)
+  .post(passport, eventControllers.postEvent)
 
 router
   .route('/:id')
   .get(eventControllers.getEventById)
-  .put(eventControllers.putEvent)
-  .delete(eventControllers.deleteEvent)
+  .put(passport, eventControllers.putEvent)
+  .delete(passport, eventControllers.deleteEvent)
 
 module.exports = router
