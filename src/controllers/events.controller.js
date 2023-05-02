@@ -25,7 +25,6 @@ const getEvents = async (req, res, next) => {
 
 const postEvent = async (req, res) => {
   const data = req.body
-  console.log(data)
 
   try {
     await createEvent(data)
