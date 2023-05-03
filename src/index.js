@@ -31,6 +31,14 @@ app.get('/', ({ res }) => {
 
 routerModels(app)
 
+app.use('*', async (req, res) => {
+  try {
+    return res.status(404).send('Page Not Found')
+  } catch (error) {
+    return res.status(404).send('Error loading page not found')
+  }
+})
+
 if (config.nodeEnv != 'test') {
   app.listen(config.port, () => {
     console.log(`Server started on port: ${config.port}`)
