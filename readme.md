@@ -12,11 +12,11 @@
 
 - /api/v1/
 
-POST /events: Create a new event.
-GET /events: Retrieve all events.
-GET /events/:id Retrieve a single event by its event_id.
-PUT /events/:id Update an existing event by its event_id.
-DELETE /events/:id Delete an existing event by its event_id.
+POST /events: Create a new event. <br />
+GET /events: Retrieve all events. <br />
+GET /events/:id Retrieve a single event by its event_id. <br />
+PUT /events/:id Update an existing event by its event_id. <br />
+DELETE /events/:id Delete an existing event by its event_id. <br />
 
-POST /auth/login
+POST /auth/login <br />
 POST /auth/sign-up
