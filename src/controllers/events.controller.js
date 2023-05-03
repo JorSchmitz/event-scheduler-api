@@ -19,7 +19,9 @@ const getEvents = async (req, res, next) => {
     const results = getPagingData(events, page, limit)
     return res.status(200).json({ results: results })
   } catch (error) {
-    next(error)
+    return res
+      .status(400)
+      .json({ message: 'Error getting events', data: error })
   }
 }
 

@@ -23,6 +23,26 @@ const findAndCount = async (query) => {
     options.where.title = { [Op.iLike]: `%${title}%` }
   }
 
+  const { description } = query
+  if (description) {
+    options.where.description = { [Op.iLike]: `%${description}%` }
+  }
+
+  const { start_time } = query
+  if (start_time) {
+    options.where.start_time = { [Op.iLike]: `%${start_time}%` }
+  }
+
+  const { end_time } = query
+  if (end_time) {
+    options.where.end_time = { [Op.iLike]: `%${end_time}%` }
+  }
+
+  const { location } = query
+  if (location) {
+    options.where.location = { [Op.iLike]: `%${location}%` }
+  }
+
   options.distinct = true
 
   const events = await models.Events.findAndCountAll(options)
